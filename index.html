@@ -75,10 +75,14 @@ limitations under the License.
 
     <h2>cURL Command to Send Push</h2>
     <div class="js-curl-command"></div>
+     <button class="js-push-send" onClick="push_send()">
+      Send push
+    </button>
 
-    <script src="./config.js"></script>
-    <script src="./demo.js"></script>
-    <script src="./main.js"></script>
+    <script src="config.js"></script>
+    <script src="demo.js"></script>
+    <script src="main.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script>
       /* jshint ignore:start */
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -88,7 +92,38 @@ limitations under the License.
       ga('create', 'UA-53563471-1', 'auto');
       ga('send', 'pageview');
       /* jshint ignore:end */
+      
+      
+      function push_send(){
+    	  
+//     	  var list = {"dZOt4e1ZOCk:APA91bGq9lqm-YVL-MwdKXcm6bdfMORdgsGdPI-P0I4LMq13Ft6g92jnDNcoaMR8eNYfsPns0jJ5O2atSAynqfnbwVHdo3YbwgZgFwSNzHyVNjNozzPw3lnfUxTx0tnpMNj9j_uOczNl\"};
+    	    	$.ajax({
+    	    	        url: 'https://android.googleapis.com/gcm/send',
+    	    	        beforeSend: function(xhr) {
+    	    	             xhr.setRequestHeader("Authorization", "key=AAAAC6mb28A:APA91bGV-xNKlwkKxd3l8NL_UKROQqdmiMCKWdwAHTMCtuUYxq6NjbR8RqrjGDlEXirzz8XVNjDIEMOexWDLslUzpuEuW6o5siR8gG_7cvuJS9JsUdkF8m0c8lEdEaS5-VlUccO90Blp")
+    	    	        }, 
+    	    	        dataType : "json",
+    	    	        registration_ids : "dZOt4e1ZOCk:APA91bGq9lqm-YVL-MwdKXcm6bdfMORdgsGdPI-P0I4LMq13Ft6g92jnDNcoaMR8eNYfsPns0jJ5O2atSAynqfnbwVHdo3YbwgZgFwSNzHyVNjNozzPw3lnfUxTx0tnpMNj9j_uOczNl",
+    	    	        success: function(data){
+    	    	            console(data);
+    	    	            //process the JSON data etc
+    	    	        }
+    	    	});
+    	  
+      }
     </script>
+    
+    
+<!-- Authorization: key=AAAAC6mb28A:APA91bGV-xNKlwkKxd3l8NL_UKROQqdmiMCKWdwAHTMCtuUYxq6NjbR8RqrjGDlEXirzz8XVNjDIEMOexWDLslUzpuEuW6o5siR8gG_7cvuJS9JsUdkF8m0c8lEdEaS5-VlUccO90Blp -->
+
+<!-- Content-Type:"application/json"  -->
+<!-- https://android.googleapis.com/gcm/send  -->
+<!-- -d  -->
+
+<!-- "{\"registration_ids\":[\"dZOt4e1ZOCk:APA91bGq9lqm-YVL-MwdKXcm6bdfMORdgsGdPI-P0I4LMq13Ft6g92jnDNcoaMR8eNYfsPns0jJ5O2atSAynqfnbwVHdo3YbwgZgFwSNzHyVNjNozzPw3lnfUxTx0tnpMNj9j_uOczNl\"]}" -->
+    
+    
+    
     <!-- Built with love using Web Starter Kit -->
   </body>
 </html>
