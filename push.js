@@ -244,6 +244,8 @@ window.addEventListener('load', function() {
     }
   });
 
+	alert("init");
+	alert('serviceWorker' in navigator);
   // Check that service workers are supported, if so, progressively
   // enhance and add push messaging support, otherwise continue without it.
   if ('serviceWorker' in navigator) {
